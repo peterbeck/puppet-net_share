@@ -43,7 +43,9 @@ Puppet::Type.type(:net_share).provide(:net_share) do
   def flush
     if @property_hash[:ensure] != :absent
       if @initial_properties[:ensure] != :absent
-        info "deleting and recreating net_share '#{name}'"
+      	#error on puppet run:
+      	#https://github.com/simondean/puppet-net_share/issues/3#issuecomment-59025900
+        #info "deleting and recreating net_share '#{name}'"
         execute_delete
       end
 
